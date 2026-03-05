@@ -110,8 +110,15 @@
 
         @media (max-width: 768px) {
             .logo-svg {
-                width: 400px;
-                height: 400px;
+                width: min(85vw, 350px);
+                height: min(85vw, 350px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo-svg {
+                width: 80vw;
+                height: 80vw;
             }
         }
 
@@ -640,11 +647,13 @@
         /* Responsive Design */
         @media (max-width: 768px) {
             section {
-                padding: 3rem 1.5rem;
+                padding: 2.5rem 1.25rem;
             }
 
             #menu, #contact {
-                padding: 3rem 1.5rem;
+                padding: 2.5rem 1.25rem;
+                border-radius: 20px;
+                margin: 1.5rem auto;
             }
 
             .info-grid {
@@ -652,15 +661,112 @@
             }
 
             .sazon-large {
-                font-size: 4.5rem;
+                font-size: 4rem;
             }
 
             .de-slc-line {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
 
             section h2 {
+                font-size: 2.5rem;
+            }
+
+            .tab-button {
+                font-size: 1.5rem;
+                padding: 0.75rem 1.25rem;
+            }
+
+            .story-text {
+                padding: 1.5rem;
+            }
+
+            .story-text p {
+                font-size: 1rem;
+            }
+
+            .menu-placeholder {
+                padding: 2rem 1.25rem;
+            }
+
+            .social-links {
+                gap: 1rem;
+            }
+
+            .social-link {
+                padding: 0.75rem 1.25rem;
+                font-size: 1rem;
+            }
+
+            .contact-info {
+                font-size: 1.1rem;
+            }
+
+            .info-card {
+                padding: 1.5rem;
+            }
+
+            .wepa {
+                font-size: clamp(2rem, 8vw, 4rem);
+            }
+
+            .tagline {
+                font-size: clamp(1rem, 4vw, 1.5rem);
+            }
+
+            .subtitle {
+                font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+                padding: 0 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 1rem;
+            }
+
+            .sazon-large {
                 font-size: 3rem;
+            }
+
+            .de-slc-line {
+                font-size: 1.5rem;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            .tab-button {
+                font-size: 1.3rem;
+                padding: 0.5rem 1rem;
+            }
+
+            .tabs-header {
+                gap: 0.5rem;
+                margin-bottom: 2rem;
+            }
+
+            .story-images img {
+                height: 220px;
+            }
+
+            .social-link {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            #contact {
+                padding: 2rem 1rem;
+            }
+
+            .scroll-indicator {
+                bottom: 1rem;
             }
         }
 
