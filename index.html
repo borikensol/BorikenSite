@@ -573,6 +573,157 @@
             line-height: 1.8;
         }
 
+        /* Menu Styles */
+        .menu-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .menu-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 2rem;
+        }
+
+        .menu-section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: var(--tropical-red);
+            border-bottom: 3px solid var(--palm-green);
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.05em;
+        }
+
+        .menu-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--sand-cream);
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.5rem;
+            gap: 1rem;
+        }
+
+        .menu-item-name {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            color: var(--ocean-blue);
+            letter-spacing: 0.03em;
+        }
+
+        .menu-item-price {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            color: var(--tropical-red);
+            white-space: nowrap;
+        }
+
+        .menu-item-description {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.6;
+            margin-top: 0.3rem;
+        }
+
+        .menu-options {
+            margin-top: 0.8rem;
+            padding-left: 1rem;
+        }
+
+        .menu-option-group {
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-option-label {
+            font-weight: 600;
+            color: var(--palm-green);
+            font-size: 0.95rem;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .menu-option-items {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .menu-combo {
+            background: linear-gradient(135deg, rgba(0, 152, 212, 0.05), rgba(42, 157, 143, 0.05));
+            border: 2px solid var(--ocean-blue);
+            padding: 1.5rem;
+            border-radius: 12px;
+            margin-bottom: 2rem;
+        }
+
+        .menu-combo .menu-item-name {
+            font-size: 1.8rem;
+            color: var(--tropical-red);
+        }
+
+        .menu-combo .menu-item-price {
+            font-size: 1.8rem;
+        }
+
+        .menu-size-options {
+            display: flex;
+            gap: 2rem;
+            margin-top: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .menu-size-option {
+            font-size: 1rem;
+            color: var(--ocean-blue);
+        }
+
+        .menu-size-option .size-label {
+            font-weight: 600;
+            margin-right: 0.3rem;
+        }
+
+        .menu-size-option .size-price {
+            color: var(--tropical-red);
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .menu-section {
+                padding: 1.5rem;
+            }
+
+            .menu-item-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.3rem;
+            }
+
+            .menu-item-name {
+                font-size: 1.3rem;
+            }
+
+            .menu-item-price {
+                font-size: 1.3rem;
+            }
+
+            .menu-section-title {
+                font-size: 1.7rem;
+            }
+        }
+
         /* Location & Hours Section */
         #location {
             text-align: center;
@@ -960,11 +1111,196 @@
             
             <div class="tab-content active" id="menu-tab">
                 <h2>Our Menu</h2>
-                <div class="menu-placeholder">
-                    <h3>Coming Soon!</h3>
-                    <p>We're perfecting our menu of authentic Puerto Rican dishes.<br>
-                    From traditional arroz con gandules to crispy alcapurrias, get ready for an explosion of Caribeño flavor.<br><br>
-                    <strong>Check back soon for our full menu with prices!</strong></p>
+                <div class="menu-container">
+                    
+                    <!-- COMBO SPECIAL -->
+                    <div class="menu-combo menu-item">
+                        <div class="menu-item-header">
+                            <span class="menu-item-name">Bori Sol COMBO</span>
+                            <span class="menu-item-price">$23</span>
+                        </div>
+                        <div class="menu-item-description">
+                            Plate + Alcapurria or Empanadilla + Drink
+                        </div>
+                    </div>
+
+                    <!-- MEALS -->
+                    <div class="menu-section">
+                        <h3 class="menu-section-title">Meals</h3>
+                        
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="menu-item-name">BOWL</span>
+                                <span class="menu-item-price">$13</span>
+                            </div>
+                            <div class="menu-item-description">
+                                Rice • Carne Guisada • Habichuelas<br>
+                                <em style="font-size: 0.85em; color: #777; margin-left: 3.8rem;">"Beef Stew"</em>
+                                <em style="font-size: 0.85em; color: #777; margin-left: 2rem;">"Beans"</em>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="menu-item-name">PLATE</span>
+                                <span class="menu-item-price">$17</span>
+                            </div>
+                            <div class="menu-item-description">
+                                Rice • Carne Guisada • Habichuelas • Choice of Side<br>
+                                <em style="font-size: 0.85em; color: #777; margin-left: 3.8rem;">"Beef Stew"</em>
+                                <em style="font-size: 0.85em; color: #777; margin-left: 2rem;">"Beans"</em>
+                            </div>
+                            <div class="menu-item-description" style="margin-top: 0.8rem; padding-top: 0.8rem; border-top: 1px solid #e0e0e0;">
+                                <strong style="color: var(--palm-green);">Rice Options:</strong><br>
+                                <span style="padding-left: 1rem;">• Arroz con Gandules +$1.50 <em style="font-size: 0.9em; color: #777;">(Rice, Pigeon Peas, Pork, & Olives)</em></span><br>
+                                <span style="padding-left: 1rem;">• White Rice</span><br>
+                                <strong style="color: var(--palm-green); margin-top: 0.5rem; display: inline-block;">Sides:</strong> Tostones • Amarillos • Yuca
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FRIED FAVORITES -->
+                    <div class="menu-section">
+                        <h3 class="menu-section-title">Fried Favorites</h3>
+                        
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="menu-item-name">Tostones or Amarillos</span>
+                            </div>
+                            <div class="menu-item-description">
+                                <em style="font-size: 0.9em; color: #777;">"Fried Savory, Plantain Slices" • "Fried Sweet Plantain"</em>
+                            </div>
+                            <div class="menu-size-options">
+                                <div class="menu-size-option">
+                                    <span class="size-label">3 –</span>
+                                    <span class="size-price">$2.50</span>
+                                </div>
+                                <div class="menu-size-option">
+                                    <span class="size-label">5 –</span>
+                                    <span class="size-price">$4.50</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="menu-item-name">Mofongitos</span>
+                            </div>
+                            <div class="menu-item-description">
+                                <em style="font-size: 0.9em; color: #777;">"Garlicky mashed plantains with pork"</em>
+                            </div>
+                            <div class="menu-size-options">
+                                <div class="menu-size-option">
+                                    <span class="size-label">3 –</span>
+                                    <span class="size-price">$5.50</span>
+                                </div>
+                                <div class="menu-size-option">
+                                    <span class="size-label">5 –</span>
+                                    <span class="size-price">$7.50</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="menu-item-name">Empanadilla</span>
+                                <span class="menu-item-price">$5</span>
+                            </div>
+                            <div class="menu-item-description" style="padding-left: 1rem; margin-top: 0.5rem;">
+                                • Carne <em style="font-size: 0.9em; color: #777;">(seasoned beef)</em><br>
+                                • Pizza <em style="font-size: 0.9em; color: #777;">(mozzarella, pizza sauce & pepperoni)</em>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="menu-item-name">Alcapurria</span>
+                                <span class="menu-item-price">$5</span>
+                            </div>
+                            <div class="menu-item-description">
+                                <em style="font-size: 0.9em; color: #777;">"Fried Stuffed Fritters"</em>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="menu-item-name">Sorullitos Basket</span>
+                                <span class="menu-item-price">$5</span>
+                            </div>
+                            <div class="menu-item-description">
+                                <em style="font-size: 0.9em; color: #777;">"Fried Cornmeal Fritters"</em>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="menu-item-name">Yuca Fries Basket</span>
+                                <span class="menu-item-price">$5</span>
+                            </div>
+                            <div class="menu-item-description">
+                                <em style="font-size: 0.9em; color: #777;">"Fried Cassava"</em>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- EXTRAS -->
+                    <div class="menu-section">
+                        <h3 class="menu-section-title">Extras</h3>
+                        
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="menu-item-name">Aguacate</span>
+                                <span class="menu-item-price">$2</span>
+                            </div>
+                            <div class="menu-item-description">
+                                <em style="font-size: 0.9em; color: #777;">"Avocado"</em>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="menu-item-name">Sauces</span>
+                            </div>
+                            <div class="menu-size-options">
+                                <div class="menu-size-option">
+                                    <span class="size-label">Mayo Ketchup –</span>
+                                    <span class="size-price">$0.50</span>
+                                </div>
+                                <div class="menu-size-option">
+                                    <span class="size-label">Mayo Cilantro –</span>
+                                    <span class="size-price">$0.50</span>
+                                </div>
+                                <div class="menu-size-option">
+                                    <span class="size-label">Pique –</span>
+                                    <span class="size-price">$0.50</span>
+                                    <em style="font-size: 0.85em; color: #777; display: block; margin-top: 0.2rem;">"Traditional Hot Sauce/ Oil"</em>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- DRINKS -->
+                    <div class="menu-section">
+                        <h3 class="menu-section-title">Drinks</h3>
+                        
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="menu-item-name">Jugo de Parcha</span>
+                                <span class="menu-item-price">$5</span>
+                            </div>
+                            <div class="menu-item-description">
+                                <em style="font-size: 0.9em; color: #777;">"Passionfruit Juice"</em>
+                            </div>
+                        </div>
+
+                        <div class="menu-item">
+                            <div class="menu-item-header">
+                                <span class="menu-item-name">Piña Colada</span>
+                                <span class="menu-item-price">$6</span>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
             
@@ -1088,8 +1424,7 @@
         lightboxClose.addEventListener('click', () => {
             lightbox.classList.remove('active');
         });
-
-        });
+    });
     </script>
 </body>
 </html>
