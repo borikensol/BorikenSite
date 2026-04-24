@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu – Borikén Sol</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sunset-orange: #FF6B35;
+            --tropical-red: #E63946;
+            --palm-green: #2A9D8F;
+            --ocean-blue: #0098D4;
+            --sand-cream: #F4E9CD;
+            --bright-yellow: #FFD23F;
+            --warm-white: #FFF8F0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            color: var(--ocean-blue);
+            background: var(--warm-white);
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(42, 157, 143, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 210, 63, 0.05) 0%, transparent 50%);
+            z-index: -1;
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.05); }
+            66% { transform: translate(-20px, 20px) scale(0.95); }
+        }
+
+        /* ── Top Nav Bar ── */
+        .top-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.2rem 2.5rem;
+            background: var(--ocean-blue);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .nav-logo img {
+            height: 52px;
+            width: 52px;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
+        }
+
+        .nav-logo-text {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            color: var(--bright-yellow);
+            letter-spacing: 0.05em;
+            line-height: 1;
+        }
+
+        .nav-logo-text span {
+            display: block;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.75);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .nav-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 0.08em;
+            color: var(--bright-yellow);
+            text-decoration: none;
+            padding: 0.5rem 1.2rem;
+            border: 2px solid var(--bright-yellow);
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-back:hover {
+            background: var(--bright-yellow);
+            color: var(--ocean-blue);
+        }
+
+        /* ── Page Hero ── */
+        .menu-hero {
+            text-align: center;
+            padding: 4rem 2rem 2.5rem;
+            position: relative;
+        }
+
+        .menu-hero h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(4rem, 12vw, 8rem);
+            color: var(--tropical-red);
+            letter-spacing: 0.05em;
+            line-height: 0.9;
+            text-shadow: 4px 4px 0 var(--bright-yellow);
+            animation: fadeInDown 0.8s ease-out both;
+        }
+
+        .menu-hero-sub {
+            font-size: clamp(1rem, 2.5vw, 1.4rem);
+            color: var(--palm-green);
+            font-weight: 600;
+            margin-top: 0.75rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            animation: fadeInDown 0.8s ease-out 0.2s both;
+        }
+
+        .hero-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 1.5rem auto 0;
+            max-width: 400px;
+            animation: fadeInDown 0.8s ease-out 0.3s both;
+        }
+
+        .hero-divider::before,
+        .hero-divider::after {
+            content: '';
+            flex: 1;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--sunset-orange));
+        }
+
+        .hero-divider::after {
+            background: linear-gradient(90deg, var(--sunset-orange), transparent);
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── Menu Layout ── */
+        .menu-page {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 1rem 2rem 5rem;
+        }
+
+        /* ── Category Nav Pills ── */
+        .category-nav {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-bottom: 3rem;
+            animation: fadeInDown 0.8s ease-out 0.4s both;
+        }
+
+        .cat-pill {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.1rem;
+            letter-spacing: 0.07em;
+            color: var(--ocean-blue);
+            background: white;
+            border: 2px solid var(--sand-cream);
+            border-radius: 50px;
+            padding: 0.4rem 1.2rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.25s ease;
+        }
+
+        .cat-pill:hover {
+            border-color: var(--tropical-red);
+            color: var(--tropical-red);
+            transform: translateY(-2px);
+        }
+
+        /* ── Combo Banner ── */
+        .combo-banner {
+            background: linear-gradient(135deg, var(--ocean-blue) 0%, #006fa3 100%);
+            border-radius: 20px;
+            padding: 2rem 2.5rem;
+            margin-bottom: 2.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+            box-shadow: 0 10px 40px rgba(0,152,212,0.25);
+            position: relative;
+            overflow: hidden;
+            animation: slideUp 0.7s ease-out 0.5s both;
+        }
+
+        .combo-banner::before {
+            display: none;
+        }
+
+        .combo-banner-left {
+            display: flex;
+            flex-direction: column;
+            gap: 0.4rem;
+        }
+
+        .combo-label {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 0.95rem;
+            letter-spacing: 0.2em;
+            color: var(--bright-yellow);
+            text-transform: uppercase;
+        }
+
+        .combo-name {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(2rem, 5vw, 2.8rem);
+            color: white;
+            letter-spacing: 0.05em;
+            line-height: 1;
+        }
+
+        .combo-desc {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.85);
+            line-height: 1.5;
+        }
+
+        .combo-desc em {
+            color: rgba(255,255,255,0.6);
+            font-style: italic;
+            font-size: 0.9em;
+        }
+
+        .combo-price-badge {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            color: var(--bright-yellow);
+            white-space: nowrap;
+            text-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+            flex-shrink: 0;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── Menu Section Card ── */
+        .menu-section-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 6px 30px rgba(0,0,0,0.07);
+            margin-bottom: 2rem;
+            overflow: hidden;
+            animation: slideUp 0.7s ease-out both;
+        }
+
+        .menu-section-card:nth-child(2) { animation-delay: 0.55s; }
+        .menu-section-card:nth-child(3) { animation-delay: 0.65s; }
+        .menu-section-card:nth-child(4) { animation-delay: 0.75s; }
+        .menu-section-card:nth-child(5) { animation-delay: 0.85s; }
+        .menu-section-card:nth-child(6) { animation-delay: 0.95s; }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.2rem 2rem;
+            background: linear-gradient(135deg, rgba(230,57,70,0.06), rgba(42,157,143,0.06));
+            border-bottom: 3px solid var(--sand-cream);
+        }
+
+        .section-icon {
+            font-size: 1.8rem;
+            line-height: 1;
+        }
+
+        .section-title {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: var(--tropical-red);
+            letter-spacing: 0.05em;
+        }
+
+        .section-body {
+            padding: 1.5rem 2rem;
+        }
+
+        /* ── Menu Item Row ── */
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1.5rem;
+            padding: 1.2rem 0;
+            border-bottom: 1px solid var(--sand-cream);
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .menu-item:first-child {
+            padding-top: 0;
+        }
+
+        .item-left {
+            flex: 1;
+        }
+
+        .item-name {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            color: var(--ocean-blue);
+            letter-spacing: 0.03em;
+            line-height: 1.1;
+        }
+
+        .item-translation {
+            font-size: 0.88rem;
+            color: #888;
+            font-style: italic;
+            margin-top: 0.15rem;
+        }
+
+        .item-desc {
+            font-size: 0.97rem;
+            color: #555;
+            line-height: 1.6;
+            margin-top: 0.5rem;
+        }
+
+        .item-desc ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 0.3rem;
+        }
+
+        .item-desc ul li {
+            padding: 0.15rem 0;
+            display: flex;
+            align-items: baseline;
+            gap: 0.4rem;
+        }
+
+        .item-desc ul li::before {
+            content: '•';
+            color: var(--palm-green);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .item-desc ul li em {
+            color: #888;
+            font-size: 0.88em;
+        }
+
+        .item-sub-section {
+            margin-top: 0.8rem;
+            padding-top: 0.8rem;
+            border-top: 1px solid #f0f0f0;
+        }
+
+        .item-sub-label {
+            font-weight: 700;
+            color: var(--palm-green);
+            font-size: 0.92rem;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        .item-sub-options {
+            font-size: 0.95rem;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .item-sub-options .upcharge {
+            color: var(--tropical-red);
+            font-weight: 600;
+        }
+
+        .item-sub-options em {
+            color: #888;
+            font-size: 0.88em;
+        }
+
+        .item-right {
+            flex-shrink: 0;
+            text-align: right;
+        }
+
+        .item-price {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            color: var(--tropical-red);
+            line-height: 1;
+        }
+
+        /* Empanadilla sub-options */
+        .filling-options {
+            margin-top: 0.5rem;
+            padding-left: 0.5rem;
+        }
+
+        .filling-options li {
+            font-size: 0.95rem;
+            color: #555;
+            padding: 0.15rem 0;
+            display: flex;
+            align-items: baseline;
+            gap: 0.4rem;
+        }
+
+        .filling-options li::before {
+            content: '–';
+            color: var(--sunset-orange);
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .filling-options li em {
+            color: #888;
+            font-size: 0.88em;
+        }
+
+        /* Sauces row */
+        .sauce-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem 1.8rem;
+            margin-top: 0.6rem;
+        }
+
+        .sauce-item {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.97rem;
+            color: #444;
+        }
+
+        .sauce-item .sauce-price {
+            font-family: 'Bebas Neue', sans-serif;
+            color: var(--tropical-red);
+            font-size: 1.1rem;
+        }
+
+        .sauce-note {
+            font-size: 0.85em;
+            color: #888;
+            font-style: italic;
+        }
+
+        /* ── Footer ── */
+        .menu-footer {
+            background: var(--ocean-blue);
+            color: rgba(255,255,255,0.75);
+            text-align: center;
+            padding: 2.5rem 2rem;
+            margin-top: 1rem;
+        }
+
+        .menu-footer strong {
+            color: var(--bright-yellow);
+            font-size: 1.1rem;
+        }
+
+        .menu-footer p {
+            font-size: 0.95rem;
+            margin-top: 0.4rem;
+            line-height: 1.6;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .top-nav {
+                padding: 1rem 1.25rem;
+            }
+
+            .nav-logo-text {
+                font-size: 1.4rem;
+            }
+
+            .menu-hero {
+                padding: 3rem 1.25rem 1.5rem;
+            }
+
+            .menu-page {
+                padding: 1rem 1.25rem 4rem;
+            }
+
+            .combo-banner {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 1.5rem;
+                gap: 1rem;
+            }
+
+            .combo-price-badge {
+                font-size: 2.5rem;
+            }
+
+            .section-body {
+                padding: 1.2rem 1.25rem;
+            }
+
+            .section-header {
+                padding: 1rem 1.25rem;
+            }
+
+            .item-name {
+                font-size: 1.3rem;
+            }
+
+            .item-price {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-logo img {
+                height: 40px;
+                width: 40px;
+            }
+
+            .nav-logo-text span {
+                display: none;
+            }
+
+            .sauce-row {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
+
+        ::selection {
+            background: var(--tropical-red);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <a href="index.html" class="nav-logo">
+            <img src="img_2.png" alt="Borikén Sol Logo">
+            <div class="nav-logo-text">
+                Borikén Sol
+                <span>El Sazón de SLC</span>
+            </div>
+        </a>
+        <a href="index.html" class="nav-back">← Home</a>
+    </nav>
+
+    <!-- Page Hero -->
+    <div class="menu-hero">
+        <h1>Our Menu</h1>
+        <p class="menu-hero-sub">Authentic Puerto Rican • Salt Lake City, UT</p>
+        <div class="hero-divider"></div>
+    </div>
+
+    <main class="menu-page">
+
+        <!-- Category Nav -->
+        <nav class="category-nav" aria-label="Jump to section">
+            <a href="#combo" class="cat-pill">Combo</a>
+            <a href="#meals" class="cat-pill">Meals</a>
+            <a href="#fried" class="cat-pill">Fried Favorites</a>
+            <a href="#extras" class="cat-pill">Extras</a>
+            <a href="#drinks" class="cat-pill">Drinks</a>
+        </nav>
+
+        <!-- COMBO -->
+        <div id="combo" class="combo-banner">
+            <div class="combo-banner-left">
+                <span class="combo-label">Special</span>
+                <div class="combo-name">Bori Sol COMBO</div>
+                <div class="combo-desc">
+                    Plate + Alcapurria or Empanadilla + Drink<br>
+                    <em>"Fried Stuffed Fritters" &nbsp;•&nbsp; "Fried Empanada"</em>
+                </div>
+            </div>
+            <div class="combo-price-badge">$27</div>
+        </div>
+
+        <!-- MEALS -->
+        <div id="meals" class="menu-section-card">
+            <div class="section-header">
+                <h2 class="section-title">Meals</h2>
+            </div>
+            <div class="section-body">
+
+                <div class="menu-item">
+                    <div class="item-left">
+                        <div class="item-name">Santurce Plate</div>
+                        <div class="item-desc">
+                            <ul>
+                                <li>Rice</li>
+                                <li>Carne Guisada <em>"Beef Stew"</em></li>
+                                <li>Habichuelas <em>"Beans"</em></li>
+                                <li>Choice of Side</li>
+                            </ul>
+                        </div>
+                        <div class="item-sub-section">
+                            <span class="item-sub-label">Rice Options</span>
+                            <div class="item-sub-options">
+                                White Rice<br>
+                                Arroz con Gandules <span class="upcharge">+$2.00</span> <em>"Rice, Pigeon Peas, Pork, &amp; Olives"</em>
+                            </div>
+                        </div>
+                        <div class="item-sub-section">
+                            <span class="item-sub-label">Sides</span>
+                            <div class="item-sub-options">
+                                Tostones &nbsp;•&nbsp; Amarillos &nbsp;•&nbsp; Ensalada de Coditos <em>"Pasta Salad"</em>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="item-right">
+                        <div class="item-price">$18</div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-left">
+                        <div class="item-name">Carolina Bowl</div>
+                        <div class="item-desc">
+                            <ul>
+                                <li>Rice</li>
+                                <li>Carne Guisada <em>"Beef Stew"</em></li>
+                                <li>Habichuelas <em>"Beans"</em></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="item-right">
+                        <div class="item-price">$14</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- FRIED FAVORITES -->
+        <div id="fried" class="menu-section-card">
+            <div class="section-header">
+                <h2 class="section-title">Fried Favorites</h2>
+            </div>
+            <div class="section-body">
+
+                <div class="menu-item">
+                    <div class="item-left">
+                        <div class="item-name">Mofongitos</div>
+                        <div class="item-translation">"Garlicky mashed plantains with pork"</div>
+                    </div>
+                    <div class="item-right">
+                        <div class="item-price">$10</div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-left">
+                        <div class="item-name">Alcapurria</div>
+                        <div class="item-translation">"Fried Stuffed Fritters"</div>
+                    </div>
+                    <div class="item-right">
+                        <div class="item-price">$8</div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-left">
+                        <div class="item-name">Empanadilla</div>
+                        <ul class="filling-options">
+                            <li>Carne <em>(seasoned beef)</em></li>
+                            <li>Pizza <em>(mozzarella, pizza sauce &amp; pepperoni)</em></li>
+                        </ul>
+                    </div>
+                    <div class="item-right">
+                        <div class="item-price">$7</div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-left">
+                        <div class="item-name">Tostones or Amarillos</div>
+                        <div class="item-translation">"Fried Savory, Plantain Slices" &nbsp;•&nbsp; "Fried Sweet Plantains"</div>
+                    </div>
+                    <div class="item-right">
+                        <div class="item-price">$7</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- EXTRAS -->
+        <div id="extras" class="menu-section-card">
+            <div class="section-header">
+                <h2 class="section-title">Extras</h2>
+            </div>
+            <div class="section-body">
+
+                <div class="menu-item">
+                    <div class="item-left">
+                        <div class="item-name">Aguacate</div>
+                        <div class="item-translation">"Avocado"</div>
+                    </div>
+                    <div class="item-right">
+                        <div class="item-price">$2</div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-left">
+                        <div class="item-name">Sauces</div>
+                        <div class="sauce-row">
+                            <div class="sauce-item">
+                                Mayo Ketchup <span class="sauce-price">$0.50</span>
+                            </div>
+                            <div class="sauce-item">
+                                Mayo Cilantro <span class="sauce-price">$0.50</span>
+                            </div>
+                            <div class="sauce-item">
+                                Pique <span class="sauce-price">$0.50</span>
+                                <span class="sauce-note">"Traditional Hot Sauce / Oil"</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- DRINKS -->
+        <div id="drinks" class="menu-section-card">
+            <div class="section-header">
+                <h2 class="section-title">Drinks</h2>
+            </div>
+            <div class="section-body">
+
+                <div class="menu-item">
+                    <div class="item-left">
+                        <div class="item-name">Piña Colada</div>
+                    </div>
+                    <div class="item-right">
+                        <div class="item-price">$6</div>
+                    </div>
+                </div>
+
+                <div class="menu-item">
+                    <div class="item-left">
+                        <div class="item-name">Jugo de Parcha</div>
+                        <div class="item-translation">"Passionfruit Juice"</div>
+                    </div>
+                    <div class="item-right">
+                        <div class="item-price">$5</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="menu-footer">
+        <strong>Borikén Sol &nbsp;•&nbsp; El Sazón de SLC</strong>
+        <p>Authentic Puerto Rican Food &nbsp;•&nbsp; Salt Lake City, Utah</p>
+        <p style="margin-top: 1rem; font-size: 0.85rem;">© 2025 Borikén Sol. All rights reserved. Made with ❤️ and sazón.</p>
+    </footer>
+
+    <script>
+        // Smooth scroll for category pills
+        document.querySelectorAll('.cat-pill').forEach(pill => {
+            pill.addEventListener('click', e => {
+                e.preventDefault();
+                const target = document.querySelector(pill.getAttribute('href'));
+                if (target) {
+                    const offset = 80;
+                    const top = target.getBoundingClientRect().top + window.scrollY - offset;
+                    window.scrollTo({ top, behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
