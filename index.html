@@ -1014,29 +1014,89 @@
             }
         }
 
-        .menu-nav-link {
-            position: absolute;
-            top: 2rem;
-            left: 2rem;
-            z-index: 10;
+        /* Top Nav Bar */
+        .top-nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1.2rem 2.5rem;
+            background: var(--ocean-blue);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .nav-logo img {
+            height: 68px;
+            width: 68px;
+            object-fit: contain;
+            filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
+        }
+
+        .nav-logo-text {
             font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.4rem;
-            letter-spacing: 0.1em;
-            color: #ffffff;
+            font-size: 1.8rem;
+            color: var(--bright-yellow);
+            letter-spacing: 0.05em;
+            line-height: 1;
+        }
+
+        .nav-logo-text span {
+            display: block;
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.75);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+        }
+
+        .menu-nav-link {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.2rem;
+            letter-spacing: 0.08em;
+            color: var(--bright-yellow);
             text-decoration: none;
             padding: 0.5rem 1.4rem;
-            border: 2px solid #ffffff;
+            border: 2px solid var(--bright-yellow);
             border-radius: 50px;
-            background: rgba(0,0,0,0.25);
-            backdrop-filter: blur(6px);
-            -webkit-backdrop-filter: blur(6px);
             transition: all 0.3s ease;
         }
 
         .menu-nav-link:hover {
-            background: #FFD23F;
-            color: #0098D4;
-            border-color: #FFD23F;
+            background: var(--bright-yellow);
+            color: var(--ocean-blue);
+        }
+
+        @media (max-width: 768px) {
+            .top-nav {
+                padding: 1rem 1.25rem;
+            }
+            .nav-logo img {
+                height: 52px;
+                width: 52px;
+            }
+            .nav-logo-text {
+                font-size: 1.4rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-logo img {
+                height: 40px;
+                width: 40px;
+            }
+            .nav-logo-text span {
+                display: none;
+            }
         }
 
         /* Smooth scroll */
@@ -1107,15 +1167,20 @@
     </style>
 </head>
 <body>
+    <nav class="top-nav">
+        <a href="#" class="nav-logo">
+            <img src="img_2.png" alt="Borikén Sol Logo">
+            <div class="nav-logo-text">
+                Borikén Sol
+                <span>El Sazón de SLC</span>
+            </div>
+        </a>
+        <a href="menu.html" class="menu-nav-link">Menu</a>
+    </nav>
+
     <header>
         <div class="hero-decoration decoration-1"></div>
         <div class="hero-decoration decoration-2"></div>
-        
-        <div class="logo-container">
-            <img src="img_2.png" alt="Borikén Sol Logo" class="logo-svg">
-        </div>
-
-        <a href="menu.html" class="menu-nav-link">Menu</a>
 
         <div class="hero-text-area">
             <div class="hero-photo-bg"><img src="img_3.jpg" alt="Estevan and Nydia"></div>
